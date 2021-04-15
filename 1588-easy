@@ -1,0 +1,14 @@
+int sumOddLengthSubarrays(int* arr, int arrSize){
+    int length=1;
+    int i,j;
+    int sum=0;
+    while(length<=arrSize){
+        for(i=0;i<arrSize+1-length;i++){
+            for(j=i;j<i+length;j++){
+                sum=sum+arr[j];
+            }
+        }
+        length+=2;
+    }
+    return sum;
+}
