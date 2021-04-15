@@ -1,0 +1,11 @@
+int minCount(int* coins, int coinsSize){
+    int count=0;
+    int i;
+    for(i=0;i<coinsSize;i++){
+        if(coins[i]%2==0)count+=coins[i]/2;
+        else{
+            count+=coins[i]/2+1;
+        }
+    }
+    return count;
+}
