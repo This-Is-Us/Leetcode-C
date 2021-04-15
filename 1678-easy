@@ -1,0 +1,28 @@
+char * interpret(char * command){
+    int len=strlen(command)+1;
+    int i=0;
+    char *Goal=(char *)calloc(len,sizeof(char));
+    int count=0;
+    while(i<len){
+        if(command[i]=='G'){
+            Goal[count]='G';
+            count++;
+            i++;
+        }
+        else if(command[i]=='('&&command[i+1]==')'){
+            memcpy(Goal+count,"o",1);
+            count++;
+            i++;
+        }
+        else if(command[i]=='('&&command[i+1]=='a'&&command[i+2]=='l'&&command[i+3]==')'){
+            memcpy(Goal+count,"al",2);
+            count+=2;
+            i++;
+        }
+        else{
+            i++;
+        }
+    }
+    Goal[count]='\0';
+    return Goal;
+}
