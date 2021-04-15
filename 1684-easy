@@ -1,0 +1,16 @@
+int countConsistentStrings(char * allowed, char ** words, int wordsSize){
+    int i,j;
+    int len_a,len;
+    int count=0;
+    len_a=strlen(allowed);
+    for(i=0;i<wordsSize;i++){
+        len=strlen(words[i]);
+        for(j=0;j<len;j++){
+            if(!strchr(allowed,words[i][j]))break;
+        }
+        if (j==len){
+            count++;
+        }
+    }
+    return count;
+}
