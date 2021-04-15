@@ -1,0 +1,14 @@
+int numberOfMatches(int n){
+    int mat=0,res=n;
+    while(res!=1){
+        if(res%2==1){
+            mat+=(res-1)/2;
+            res=(res-1)/2+1;
+        }
+        else{
+            mat+=res/2;
+            res=res/2;
+        }
+    }
+    return mat;
+}
