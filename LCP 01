@@ -1,0 +1,8 @@
+int game(int* guess, int guessSize, int* answer, int answerSize){
+    int match=0;
+    int i;
+    for(i=0;i<guessSize;i++){
+        if(guess[i]==answer[i])match++;
+    }
+    return match;
+}
