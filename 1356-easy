@@ -1,0 +1,40 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int digits(int n){
+    int cnt=0;
+    while(n){
+        if(n&1)cnt++;
+        n>>=1;
+    }
+    return cnt;
+}
+int* sortByBits(int* arr, int arrSize, int* returnSize){
+    int *temp=(int *)calloc(arrSize,sizeof(int));
+    int i,j;
+    for(i=0;i<arrSize;i++){
+        temp[i]=digits(arr[i]);
+    }
+    int tmp1,tmp2;
+    for(i=0;i<arrSize-1;i++){
+        for(j=0;j<arrSize-1-i;j++){
+            if(temp[j]>temp[j+1]){
+                tmp1=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=tmp1;
+                tmp2=temp[j];
+                temp[j]=temp[j+1];
+                temp[j+1]=tmp2;
+            }
+            else if(temp[j]==temp[j+1]){
+                if(arr[j]>arr[j+1]){
+                    tmp1=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=tmp1;
+                }
+            }
+        }
+    }
+    *returnSize=arrSize;
+    return arr;
+}
