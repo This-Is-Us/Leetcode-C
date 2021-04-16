@@ -1,0 +1,28 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* reversePrint(struct ListNode* head, int* returnSize){
+    int cnt=0;
+    struct ListNode *p=head;
+    while(head){
+        cnt++;
+        head=head->next;
+    }
+    int *ans=(int *)malloc(sizeof(int)*cnt);
+    int i;
+    for(i=cnt-1;i>=0;i--){
+        ans[i]=p->val;
+        p=p->next;
+    }
+    *returnSize=cnt;
+    return ans;
+}
