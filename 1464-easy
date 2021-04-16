@@ -1,0 +1,19 @@
+int maxProduct(int* nums, int numsSize){
+    int *p=(int *)calloc(numsSize,sizeof(int));
+    int i=0,j,k,max;
+    while(i<numsSize){
+        j=0;
+        max=0;
+        while(j<numsSize){
+            if(max<nums[j]){
+                max=nums[j];
+                k=j;
+            }
+            j++;
+        }
+        p[i]=nums[k];
+        nums[k]=0;
+        i++;
+    }
+    return (p[0]-1)*(p[1]-1);
+}
