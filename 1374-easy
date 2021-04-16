@@ -1,0 +1,16 @@
+char * generateTheString(int n){
+    char *ans=(char *)calloc(n+1,sizeof(char));
+    int i;
+    if(n%2==1){
+        for(i=0;i<n;i++){
+            ans[i]='a';
+        }
+    }
+    else{
+        for(i=0;i<n-1;i++){
+            ans[i]='a';
+        }
+        ans[i]='b';
+    }
+    return ans;
+}
