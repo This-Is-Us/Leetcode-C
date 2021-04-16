@@ -1,0 +1,10 @@
+char * destCity(char *** paths, int pathsSize, int* pathsColSize){
+    int i,j;
+    for(i=0;i<pathsSize;i++){
+        for(j=0;j<pathsSize;j++){
+            if(!strcmp(paths[i][1],paths[j][0]))break;
+        }
+        if(j==pathsSize)break;
+    }
+    return paths[i][1];
+}
