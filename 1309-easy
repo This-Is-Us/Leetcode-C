@@ -1,0 +1,26 @@
+char * freqAlphabets(char * s){
+    int len=strlen(s);
+    char *ans=(char *)malloc(sizeof(char)*(len+1));
+    int i=0,j=0;
+    while(i<len){
+       if(i+2<len){
+           if(s[i+2]!='#'){
+               ans[j]=s[i]-'1'+'a';
+               j++;
+               i++;
+           }
+           else{
+               ans[j]=((s[i]-'0')*10+(s[i+1]-'1'))+'a';
+               j++;
+               i+=3;
+           }
+       }
+       else{
+           ans[j]=s[i]-'1'+'a';
+           j++;
+           i++;
+       } 
+    }
+    ans[j]='\0';
+    return ans;
+}
