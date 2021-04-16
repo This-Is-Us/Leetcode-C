@@ -1,0 +1,46 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+char ** commonChars(char ** A, int ASize, int* returnSize){
+    int num[26]={0};
+    int temp[26]={0};
+    *returnSize=0;
+    int i,j;
+    char *p;
+    p=A[0];
+    while(*p!='\0'){
+        num[*p-'a']++;
+        p++;
+    }//记录第一个字符串中出现的字符次数
+    if(ASize==1)*returnSize=sizeof(A[0]);
+    else{
+        for(i=1;i<ASize;i++){
+            p=A[i];
+            while(*p!='\0'){
+                temp[*p-'a']++;
+                p++;
+            }
+            for(j=0;j<26;j++){
+                num[j]=num[j]>temp[j]?temp[j]:num[j];
+                if(i<ASize-1)temp[j]=0;
+                else{
+                    *returnSize+=num[j];
+                }
+            }
+        }
+    }
+    char **ans=malloc(sizeof(char*)*(*returnSize));
+    for(i=0;i<*returnSize;i++){
+        ans[i]=malloc(sizeof(char)*2);
+    }
+    j=0;
+    for(i=0;i<26;i++){
+        while(num[i]!=0){
+            ans[j][0]='a'+i;
+            ans[j][1]='\0';
+            j++;
+            num[i]--;
+        }
+    }
+    return ans;
+}
