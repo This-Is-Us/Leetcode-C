@@ -1,0 +1,28 @@
+char * sortString(char * s){
+    int i,j=0;
+    int ch[26]={0};
+    int len=strlen(s);
+    char *ans=(char *)calloc(len+1,sizeof(char));
+    while(j<len){
+        ch[s[j]-'a']++;
+        j++;
+    }
+    j=0;
+    while(j<len){
+        for(i=0;i<26;i++){
+            if(ch[i]){
+                ans[j]=i+'a';
+                ch[i]--;
+                j++;
+            }
+        }
+        for(i=25;i>=0;i--){
+            if(ch[i]){
+                ans[j]=i+'a';
+                ch[i]--;
+                j++;
+            }
+        }
+    }
+    return ans;
+}
