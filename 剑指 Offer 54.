@@ -1,0 +1,24 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+int arr[10000]={0};
+int i;
+
+static void dfs(struct TreeNode *root){
+    if(root==NULL)return;
+    dfs(root->right);
+    arr[i]=root->val;
+    i++;
+    dfs(root->left);
+}
+
+int kthLargest(struct TreeNode* root, int k){
+    i=0;
+    dfs(root);
+    return arr[k-1];
+}
