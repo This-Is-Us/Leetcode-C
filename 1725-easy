@@ -1,0 +1,14 @@
+int countGoodRectangles(int** rectangles, int rectanglesSize, int* rectanglesColSize){
+    int i;
+    int *maxlen=(int *)malloc(sizeof(int)*rectanglesSize);
+    int max=0;
+    int cnt=0;
+    for(i=0;i<rectanglesSize;i++){
+        maxlen[i]=rectangles[i][0]<rectangles[i][1]?rectangles[i][0]:rectangles[i][1];
+        max=maxlen[i]>max?maxlen[i]:max;
+    }
+    for(i=0;i<rectanglesSize;i++){
+        if(maxlen[i]==max)cnt++;
+    }
+    return cnt;
+}
