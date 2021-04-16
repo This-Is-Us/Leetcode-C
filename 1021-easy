@@ -1,0 +1,22 @@
+char * removeOuterParentheses(char * S){
+    int i,j=0,len=strlen(S);
+    int sum=0;
+    for(i=0;i<len;i++){
+        if(S[i]=='('){
+            sum++;
+        }
+        if(S[i]==')'){
+            sum--;
+        }
+        if(S[i]=='('&&sum>1){
+            S[j]=S[i];
+            j++;
+        }
+        else if(S[i]==')'&&sum>0){
+            S[j]=S[i];
+            j++;
+        }
+    }
+    S[j]='\0';
+    return S;
+}
