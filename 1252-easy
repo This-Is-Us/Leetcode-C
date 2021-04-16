@@ -1,0 +1,26 @@
+int oddCells(int m, int n, int** indices, int indicesSize, int* indicesColSize){
+    int i,j,k;
+    int **cell=(int **)malloc(sizeof(int *)*m);
+    for(i=0;i<m;i++){
+        cell[i]=(int *)malloc(sizeof(int)*n);
+    }
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            cell[i][j]=0;
+        }
+    }
+    *indicesColSize=2;
+    for(i=0;i<indicesSize;i++){
+        for(j=0;j<n;j++)cell[indices[i][0]][j]+=1;
+        for(k=0;k<m;k++)cell[k][indices[i][1]]+=1;
+    }
+    int cnt=0;
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            if(cell[i][j]%2==1){
+                cnt++;
+            }
+        }
+    }
+    return cnt;
+}
